@@ -12,5 +12,9 @@
             "compilerArgs": []
         }
     ],
+    "markdownlint.config": {
+        "default": true,
+        "MD033": false
+    },
     "version": 4
 }
