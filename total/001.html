@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>001</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="优化与文件头">1. 优化与文件头</h1>
+<h2 id="基础模板">1.0. 基础模板</h2>
+<blockquote>
+<p>Description:<br />
+一个基本的代码模板，带有典型的<code>t</code>次循环，最大数组上限定义，<code>int</code>替换为<code>long long</code>等竞赛基本属性。<br />
+本地使用文件读写测试时，在文件头加一行<code>#define localDebug</code>即可。<br />
+“总是那么好用，硬要说的话，就像板烧鸡腿堡。”</p>
+</blockquote>
+<div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;bits/stdc++.h&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#define int </span><span class="dt">long</span><span class="pp"> </span><span class="dt">long</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">const</span> <span class="dt">int</span> MaxN <span class="op">=</span> <span class="fl">1e7</span> <span class="op">+</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dt">signed</span> main<span class="op">(){</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a> <span class="pp">#ifdef localDebug</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    freopen<span class="op">(</span><span class="st">&quot;file.in&quot;</span><span class="op">,</span><span class="st">&quot;r&quot;</span><span class="op">,</span>stdin<span class="op">);</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    freopen<span class="op">(</span><span class="st">&quot;file.out&quot;</span><span class="op">,</span><span class="st">&quot;w&quot;</span><span class="op">,</span>stdout<span class="op">);</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a> <span class="pp">#endif</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> t<span class="op">;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    scanf<span class="op">(</span><span class="st">&quot;</span><span class="sc">%lld</span><span class="st">&quot;</span><span class="op">,&amp;</span>t<span class="op">);</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span><span class="op">(</span>t<span class="op">--){</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a> <span class="op">}</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h2 id="读入优化">1.1. 读入优化</h2>
+<p>一般来说，<code>cin</code>大幅慢于<code>scanf</code>，可以使用<code>ios::sync_with_stdio(false);</code>关闭流同步进行优化，会略快于<code>scanf</code>。 部分题目使用<code>scanf("%lld")</code>读入<span class="math inline">10<sup>1</sup></span><span class="math inline"><sup>8</sup></span>的数据会WA，<code>cin</code>或者<code>%I64d</code>可以解决。</p>
+<blockquote>
+<p>Description: 典型的兼容多类型的快速读入，兼容空格回车。 “Tasty and crispy!”</p>
+</blockquote>
+<div class="sourceCode" id="cb2"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">template</span> <span class="op">&lt;</span><span class="kw">class</span> T<span class="op">&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">inline</span> <span class="dt">bool</span> fscan<span class="op">(</span>T <span class="op">&amp;</span>vari<span class="op">){</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> <span class="dt">char</span> ch<span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a> <span class="dt">int</span> sgn<span class="op">;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a> <span class="cf">if</span><span class="op">(</span>ch<span class="op">=</span>getchar<span class="op">(),</span>ch<span class="op">==</span>EOF<span class="op">)</span> <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span> <span class="co">//检测到EOF，返回False</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a> <span class="cf">while</span><span class="op">((</span>ch<span class="op">!=</span><span class="ch">&#39;-&#39;</span><span class="op">)&amp;&amp;((</span>ch<span class="op">&lt;</span><span class="ch">&#39;0&#39;</span><span class="op">)||(</span>ch<span class="op">&gt;</span><span class="ch">&#39;9&#39;</span><span class="op">)))</span> ch<span class="op">=</span>getchar<span class="op">();</span> <span class="co">//跳过非法字符</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a> sgn<span class="op">=(</span>ch<span class="op">==</span><span class="ch">&#39;-&#39;</span><span class="op">)?-</span><span class="dv">1</span><span class="op">:</span><span class="dv">1</span><span class="op">;</span> <span class="co">//符号处理</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a> vari<span class="op">=(</span>ch<span class="op">==</span><span class="ch">&#39;-&#39;</span><span class="op">)?</span><span class="dv">0</span><span class="op">:(</span>ch<span class="op">-</span><span class="ch">&#39;0&#39;</span><span class="op">);</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a> <span class="cf">while</span><span class="op">(</span>ch<span class="op">=</span>getchar<span class="op">(),((</span>ch<span class="op">&gt;=</span><span class="ch">&#39;0&#39;</span><span class="op">)&amp;&amp;(</span>ch<span class="op">&lt;=</span><span class="ch">&#39;9&#39;</span><span class="op">)))</span> vari<span class="op">=</span>vari<span class="op">*</span><span class="dv">10</span><span class="op">+</span>ch<span class="op">-</span><span class="ch">&#39;0&#39;</span><span class="op">;</span> <span class="co">//数字处理</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a> vari<span class="op">*=</span>sgn<span class="op">;</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a> <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h2 id="stl容器">1.2. STL容器</h2>
+<p>简单来说，就是料理包。不可口但是方便，有时需要一定的优化才能把时间控制在比较合理的范围内。</p>
+<h3 id="string">1.2.1. string</h3>
+<p>因为存在<code>string</code>与<code>C-string</code>两个相似且都广泛使用的库，在此进行比较。</p>
+<table>
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 54%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><code>string</code></th>
+<th><code>C-string</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>定义</strong></td>
+<td><code>string str;</code></td>
+<td><code>char str[LENGTH]</code></td>
+</tr>
+<tr class="even">
+<td><strong>长度</strong></td>
+<td><code>str.size();</code> <br> <code>str.length();</code></td>
+<td><code>strlen(str);</code></td>
+</tr>
+<tr class="odd">
+<td><strong>连接</strong></td>
+<td><code>str.push_back(char);</code><br> <code>str.append(str);</code><br> <code>str=str1+str2;</code></td>
+<td><code>strcat(str1,str2);</code></td>
+</tr>
+<tr class="even">
+<td><strong>拷贝</strong></td>
+<td><code>str=str1</code></td>
+<td><code>strcpy(target,standard);</code></td>
+</tr>
+<tr class="odd">
+<td><strong>比较</strong></td>
+<td><code>str1&gt;str2</code><br><code>str1&lt;str2</code></td>
+<td><code>strcmp(str1,str2);</code><br><code>//如果str1&gt;str2,返回正数，</code><br><code>相等返回0，否则返回负数。</code></td>
+</tr>
+<tr class="even">
+<td><strong>插入</strong></td>
+<td><code>str.insert(pos,char)</code></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>定位</strong></td>
+<td><code>str.find(string, pos); \\从左查找</code><br><code>str.rfind(string, pos); \\从右查找</code><br><code>\\如果找不到将会返回-1</code></td>
+<td><code>strchr(str,string);</code></td>
+</tr>
+<tr class="even">
+<td><strong>替换</strong></td>
+<td><code>str.replace(pos,n,string);</code><br><code>\\把当前字符串从索引pos开始的n个字符替换为string</code></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>删除</strong></td>
+<td><code>str.erase(pos,len);</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>RELATED:</strong> <code>tolower(char); \\转换为小写</code> <code>toupper(char); \\转换为大写</code> <!-- Divide --> <strong>TIPS:</strong> <code>string str2("123456789"); //生成"1234456789"的复制品</code> <code>string str3("12345", 0, 3); //结果为"123" ，从0位置开始，长度为3</code> <code>string str4("123456", 5); //结果为"12345" ，长度为5</code> <code>string str5(5, '2'); //结果为"22222" ,构造5个字符'2'连接而成的字符串</code> <code>string str6(str2, 2); //结果为"3456789"，截取第三个元素（2对应第三位）到最后</code></p>
+</blockquote>
+<hr />
+<h3 id="vector">1.2.2. vector</h3>
+<p>可以简单的认为，向量是一个能够存放任意类型的动态数组。<code>vector</code>是一块连续分配的内存，随着元素的不断插入，按每次一倍的机制扩充空间。 每次容器的增长，==并不是在原有连续的内存空间后再进行简单的叠加， 而是重新申请一块更大的新内存，并把现有容器中的元素逐个复制过去，然后销毁旧的内存==。 这时原有指向旧内存空间的迭代器已经失效，所以当操作容器时，迭代器要及时更新。</p>
+<table>
+<thead>
+<tr class="header">
+<th><strong>操作</strong></th>
+<th><strong>语句</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>定义</strong></td>
+<td><code>vector&lt;Type&gt; v;</code></td>
+</tr>
+<tr class="even">
+<td><strong>大小</strong></td>
+<td><code>v.size();</code></td>
+</tr>
+<tr class="odd">
+<td><strong>尾部插入</strong></td>
+<td><code>v.push_back();</code></td>
+</tr>
+<tr class="even">
+<td><strong>尾部删除</strong></td>
+<td><code>v.pop_back();</code></td>
+</tr>
+<tr class="odd">
+<td><strong>头元素迭代器</strong></td>
+<td><code>v.begin();</code></td>
+</tr>
+<tr class="even">
+<td><strong>尾元素迭代器</strong></td>
+<td><code>v.end();</code></td>
+</tr>
+<tr class="odd">
+<td><strong>插入</strong></td>
+<td><code>v.insert(pos,element);</code></td>
+</tr>
+<tr class="even">
+<td><strong>擦除</strong></td>
+<td><code>v.erase(pos);</code><br><code>v.erase(begin, end);</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>WARNING:</strong></p>
+<p>1.<code>vector</code>自带了<code>insert()</code>和<code>erase()</code>操作来在<code>vector</code>中任意位置来插入元素，但是离尾部越远效率越低，所以需要频繁的在元素中任意位置插入删除元素可以选用其它的容器，比如<code>list</code>。 2.通过下标访问时不要越界访问！ 3.<code>pushback</code>有可能导致迭代器失效！ <!-- divide --> <strong>TIPS:</strong> 双层嵌套<code>vector</code>（如<code>vector&lt;vector&lt;int&gt;&gt; v;</code>）可以通过访问二维数组的方式直接访问。也可以直接使用<code>vector</code>数组</p>
+</blockquote>
+<hr />
+<h3 id="set">1.2.3. set</h3>
+<p><code>set</code>的原型是数学中的集合。<code>set</code>作为一个容器也是用来存储同一数据类型的数据类型，并且能从一个数据集合中取出数据，在<code>set</code>中每个元素的值都唯一，而且系统能根据元素的值自动进行排序。 应该注意的是set中元素实际为常量。</p>
+<table>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 84%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>操作</strong></th>
+<th><strong>语句</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>定义</strong></td>
+<td><code>set&lt;int&gt; s; //升序</code><br><code>set&lt;int,greater&lt;int&gt;&gt; s; //降序</code></td>
+</tr>
+<tr class="even">
+<td><strong>插入</strong></td>
+<td><code>s.insert(element); //单点插入</code><br><code>s.insert(iter.begin(), iter.end()); //指针迭代器插入</code></td>
+</tr>
+<tr class="odd">
+<td><strong>判空</strong></td>
+<td><code>s.empty(); //若空返回True，否则返回False</code></td>
+</tr>
+<tr class="even">
+<td><strong>计数</strong></td>
+<td><code>s.count(); //返回个数，不存在返回0</code></td>
+</tr>
+<tr class="odd">
+<td><strong>大小</strong></td>
+<td><code>s.size();</code></td>
+</tr>
+<tr class="even">
+<td><strong>头元素迭代器</strong></td>
+<td><code>s.begin();</code></td>
+</tr>
+<tr class="odd">
+<td><strong>尾元素迭代器</strong></td>
+<td><code>s.end();</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>RELATED:</strong> <code>cout&lt;&lt;*s.lower_bound(value)&lt;&lt;endl; //输出集合中第一个大于value的值</code> <code>cout&lt;&lt;*s.upper_bound(value)&lt;&lt;endl; //输出集合中第一个大于等于value的值</code> <!-- Divide --> <strong>TIPS:</strong> BTW，<code>map</code>和<code>set</code>的插入删除效率都比其他容器要更高,复杂度<span class="math inline"><em>O</em></span>(<span class="math inline"><em>l</em><em>o</em><em>g</em></span>N<span class="math inline">)</span>。 使用<code>unordered_set</code>和<code>unordered_map</code>可以提高效率,复杂度<span class="math inline"><em>O</em></span>(<span class="math inline">1</span>),对于字符串复杂度为<span class="math inline"><em>O</em></span>(<span class="math inline"><em>l</em><em>e</em><em>n</em></span>)。 使用<code>muiltimap</code>和<code>multiset</code>可以存储相同元素。 同理，使用无序关联的容器也可以提高<code>muiltimap</code>和<code>multiset</code>的速度，分别为<code>unordered_multimap</code>和<code>unordered_multiset</code>。 如果需要反向遍历容器，可以使用rbegin()和rend()。 —</p>
+</blockquote>
+<h3 id="map">1.2.4. map</h3>
+<p>使用<code>map</code>，可以很方便的构建映射关系，它提供一对一的数据处理能力（有序键值对），第一个元素称为关键字，第二个称为关键字的值，其中关键字是唯一的。<code>map</code>是一类关联式容器。它的特点是增加和删除节点对迭代器的影响很小，除了那个操作节点，对其他的节点都没有什么影响。</p>
+<p>对于迭代器来说，可以修改实值，而不能修改key。</p>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 78%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>操作</strong></th>
+<th><strong>语句</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>定义</strong></td>
+<td><code>map&lt;type,type&gt; mp;</code></td>
+</tr>
+<tr class="even">
+<td><strong>插入</strong></td>
+<td><code>mp[key]=value</code><br><code>mp.insert(pair&lt;type,type&gt;(key,value));</code><br> <code>mp.insert(make_pair(key,value));</code></td>
+</tr>
+<tr class="odd">
+<td><strong>头元素迭代器</strong></td>
+<td><code>mp.begin();</code></td>
+</tr>
+<tr class="even">
+<td><strong>尾元素迭代器</strong></td>
+<td><code>mp.end();</code></td>
+</tr>
+</tbody>
+</table>
+<p><!-- - 1.2. STL
+            * 1.2.1. stack
+            * 1.2.2. queue
+            * 1.2.3. string
+            * 1.2.4. vector
+            * 1.2.5. set
+            * 1.2.6. map --></p>
+<h2 id="stl函数">1.3. STL函数</h2>
+<h3 id="swap">1.3.1. swap</h3>
+<blockquote>
+<p><strong>TIPS:</strong> 将两个容器的内容互换。</p>
+</blockquote>
+<div class="sourceCode" id="cb3"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">//原型如此</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">template</span> <span class="op">&lt;</span><span class="kw">class</span> T<span class="op">&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> swap<span class="op">(</span>T<span class="op">&amp;</span> a<span class="op">,</span> T<span class="op">&amp;</span> b<span class="op">)</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    T tmp <span class="op">=</span> a<span class="op">;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> b<span class="op">;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> tmp<span class="op">;</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h3 id="sort">1.3.2. sort</h3>
+<blockquote>
+<p><strong>TIPS:</strong> 对容器进行排序。在头文件<code>algorithm</code> 内省排序和插入排序的结合，内省排序又是快速排序和堆排序的结合， 根据数据量决定具体每一步使用什么算法。由于使用泛型，并不是非常快。 默认使用<code>less&lt;T&gt;</code>进行升序排序。 兼容迭代器</p>
+</blockquote>
+<div class="sourceCode" id="cb4"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sort<span class="op">(</span>begin<span class="op">,</span>end<span class="op">,</span>comp<span class="op">);</span><span class="co">//注意：区间左闭右开</span></span></code></pre></div>
+<h3 id="reverse">1.3.3. reverse</h3>
+<blockquote>
+<p><strong>TIPS:</strong> 反转容器内容。 用法与<code>sort</code>相同。</p>
+</blockquote>
+<h3 id="unique">1.3.4. unique</h3>
+<blockquote>
+<p><strong>TIPS:</strong> 去除容器内重复元素。 返回一个指针，指向去重后最后一个元素。 <code>unique(begin,end);</code></p>
+</blockquote>
+<h3 id="lower_bound">1.3.5. lower_bound</h3>
+<blockquote>
+<p><strong>TIPS:</strong> 返回第一个大于等于<code>value</code>的元素的迭代器。 <code>lower_bound(begin,end,value);</code> 支持使用迭代器</p>
+</blockquote>
+<h3 id="upper_bound">1.3.6. upper_bound</h3>
+<blockquote>
+<p><strong>TIPS:</strong> 返回第一个大于<code>value</code>的元素的迭代器。 返回和<code>upper_bound</code>一样</p>
+</blockquote>
+<h3 id="equal_range">1.3.7. equal_range</h3>
+<blockquote>
+<p><strong>TIPS:</strong> 返回第一个大于等于<code>value</code>的元素的迭代器和第一个大于<code>value</code>的元素的迭代器。 返回值为迭代器对。 原型为<code>pair&lt;iterator,iterator&gt; equal_range(const T&amp; value);</code></p>
+</blockquote>
+<h3 id="binary_search">1.3.8. binary_search</h3>
+<blockquote>
+<p><strong>TIPS:</strong> 判断元素是否在容器中。 使用二分查找，返回一个bool值。 <code>binary_search(begin,end,value);</code> 同样支持迭代器</p>
+</blockquote>
+<h3 id="merge">1.3.9. merge</h3>
+<blockquote>
+<p><strong>TIPS:</strong> 将两个容器合并成一个容器。 将两个迭代器区间合并到第三个容器</p>
+</blockquote>
+<div class="sourceCode" id="cb5"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>vector<span class="op">&lt;</span>T<span class="op">&gt;</span>v1<span class="op">;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>vector<span class="op">&lt;</span>T<span class="op">&gt;</span>v2<span class="op">;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>vector<span class="op">&lt;</span>T<span class="op">&gt;</span>v3<span class="op">;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>merge<span class="op">(</span>v1<span class="op">.</span>begin<span class="op">(),</span>v1<span class="op">.</span>end<span class="op">(),</span>v2<span class="op">.</span>begin<span class="op">(),</span>v2<span class="op">.</span>end<span class="op">(),</span>v3<span class="op">.</span>begin<span class="op">());</span></span></code></pre></div>
+<h3 id="gcd">1.3.10. GCD</h3>
+<blockquote>
+<p><strong>TIPS:</strong> 计算两个数的最大公约数。 <strong>使用</strong>：<code>__gcd(a,b);</code>(<em>注意前面的是两个下划线</em>)或者<code>gcd(a,b);</code></p>
+</blockquote>
+<h3 id="fill">1.3.11. fill</h3>
+<blockquote>
+<p><strong>TIPS:</strong> 将容器内元素全部赋值为<code>value</code>。 <code>fill(begin,end,value);</code></p>
+</blockquote>
+<h3 id="max-min">1.3.12. Max &amp; Min</h3>
+<blockquote>
+<p><strong>TIPS:</strong> 返回容器内最大值和最小值。 原型：<code>template &lt;class T&gt; T max(T a,T b);</code> <code>template &lt;class T&gt; T min(T a,T b);</code></p>
+</blockquote>
+<h3 id="next_permutation">1.3.13. next_permutation</h3>
+<blockquote>
+<p><strong>TIPS:</strong> 全排列,每调用一次，返回下一个排列。 下一个排列字典序增大 <strong>使用：</strong><code>next_permutation(begin,end);</code> <code>next</code>换成<code>prev</code>，增大字典序减小</p>
+</blockquote>
+<h3 id="bitset">1.3.14. bitset</h3>
+<blockquote>
+<p><strong>TIPS:</strong> 将整数转换成二进制的字符串。 状态压缩的有效方法</p>
+</blockquote>
+<div class="sourceCode" id="cb6"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>bitset<span class="op">&lt;</span><span class="dv">8</span><span class="op">&gt;</span> bs<span class="op">(</span><span class="bn">0xFF</span><span class="op">);</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>bitset<span class="op">&lt;</span><span class="dv">9</span><span class="op">&gt;</span>bs<span class="op">(</span>string<span class="op">(</span><span class="st">&quot;101010101&quot;</span><span class="op">));</span></span></code></pre></div>
+<h3 id="字符串与整数">1.3.15. 字符串与整数</h3>
+<blockquote>
+<p><strong>TIPS:</strong> 将整数转换成字符串。<code>to_int</code>相反 <code>s.to_string();</code> <code>stoi(s);</code> <code>s.to_int();</code> <code>stoi(s);</code></p>
+</blockquote>
+<h2 id="打表">1.4. 打表</h2>
+<h3 id="打表-1">1.4.1. 打表</h3>
+<blockquote>
+<p><strong>TIPS:</strong> 有时有些题数据范围小或者有潜在规律，这是可以在本地用穷举法找到问题的解。 禹姐姐：我能<span class="math inline"><em>O</em>(1)</span>的解决所有问题，你说<span class="math inline"><em>N</em><em>P</em></span>类问题？那只是没有找到好的算法而已</p>
+</blockquote>
+<h3 id="对拍">1.4.2. 对拍</h3>
+<blockquote>
+<p><strong>TIPS:</strong> 如果找到了一个问题的不确定算法，可以使用对拍程序，将新算法与暴力程序的输入输出做对比，看看是否有差异。以验证新算法在一定数据量内是否正确,还可以快速找到hack case</p>
+</blockquote>
+<pre class="bat"><code>
+@echo off
+set path=C:\MinGW\bin
+g++ -o hash.exe hash.cpp
+:loop
+set path=C:\Users\hp\AppData\Local\Programs\Python\Python39
+python aa.py &gt;data.in
+hash.exe &lt;data.in &gt;hash.out
+python bb.py &lt;data.in &gt;py.out
+set path=C:\Windows\System32
+fc py.out hash.out
+if errorlevel == 1 pause
+goto loop
+</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!bin/bash</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="fu">true</span><span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gcc</span> hash.cpp <span class="at">-o</span> hash.exe</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gcc</span> sort.cpp <span class="at">-o</span> sort.exe</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gcc</span> makedata.cpp <span class="at">-o</span> makedata.exe</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">./makedata.exe</span> <span class="op">&gt;</span>data.in</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">./hash.exe</span> <span class="op">&lt;</span>data.in <span class="op">&gt;</span>hash.out</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">./sort.exe</span> <span class="op">&lt;</span>data.in <span class="op">&gt;</span>sort.out</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="fu">diff</span> hash.out sort.out<span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">echo</span> OK</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> </span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">echo</span> wrong</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>        <span class="bu">break</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">fi</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include</span><span class="im">&lt;bits/stdc++.h&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    system<span class="op">(</span><span class="st">&quot;g++ in.cpp -O2 -o text.exe&quot;</span><span class="op">);</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    system<span class="op">(</span><span class="st">&quot;g++ std.cpp -O2 -o std.exe&quot;</span><span class="op">);</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i<span class="op">=</span><span class="dv">1</span><span class="op">;</span>i<span class="op">&lt;=</span><span class="dv">10000</span><span class="op">;</span>i<span class="op">++)</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>        system<span class="op">(</span><span class="st">&quot;python data_maker.py&gt;data.txt&quot;</span><span class="op">);</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>        system<span class="op">(</span><span class="st">&quot;test.exe&lt;data.txt&gt;tt.txt&quot;</span><span class="op">);</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>        <span class="dt">double</span> st<span class="op">=</span>clock<span class="op">();</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>        system<span class="op">(</span><span class="st">&quot;std.exe&lt;data.txt&gt;std.txt&quot;</span><span class="op">);</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>        <span class="dt">double</span> ed<span class="op">=</span>clock<span class="op">();</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span><span class="op">(</span>system<span class="op">(</span><span class="st">&quot;fc tt.txt std.txt&quot;</span><span class="op">))</span> <span class="op">{</span>printf<span class="op">(</span><span class="st">&quot;WA</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span><span class="cf">break</span><span class="op">;}</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span> printf<span class="op">(</span><span class="st">&quot;AC #</span><span class="sc">%d</span><span class="st"> Time:</span><span class="sc">%.3lf</span><span class="st">ms</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span>i<span class="op">,</span>ed<span class="op">-</span>st<span class="op">);</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h3 id="python">1.5. Python</h3>
+<blockquote>
+<p>如果让我归类的话，对于传统语言竞赛选手来说，Python应该归为”乱搞“的范畴。Python的显著优势在于自带高精度，以及它方便的无视类型特性，当然还有字典、列表。在比赛的时候可能会有奇效。但是需要注意的是，通常来说Python的运行效率会比较低，需要注意Python是否有专门的时间限制。 “麻辣香锅，吃多了容易闹肚子，太久不吃又馋。” 某人补充：Python一时爽，一直Python一直爽。</p>
+</blockquote>
+<p>Python是弱类型的语言。他的类型会由它的赋值而改变。当然，你也可以使用经典的<code>(type)</code>进行强制类型转换。Python并不需要类似C的大括号来标识代码块的开始与结束，以<code>tab</code>即四个空格为单位<strong>严格划分每一层代码块</strong>。</p>
+<h3 id="基础">1.5.1 基础</h3>
+<table>
+<thead>
+<tr class="header">
+<th><strong>操作</strong></th>
+<th><strong>语句</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>输入</strong></td>
+<td><code>a,b=map(type,input().split(char))</code></td>
+</tr>
+<tr class="even">
+<td><strong>输出</strong></td>
+<td><code>print(value)</code></td>
+</tr>
+<tr class="odd">
+<td><strong>函数定义</strong></td>
+<td><code>VARIBLE=value</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="函数">1.5.2 函数</h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> func(a,b，key<span class="op">=</span><span class="dv">0</span>,<span class="op">*</span>args,<span class="op">**</span>kwargs):</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a> <span class="bu">print</span>(a,b,args,kwargs)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a> <span class="co"># a和b是必须的参数，args和kwargs是可选的参数</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a> <span class="co"># arges为元组，kwargs为字典</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a> <span class="co"># 如果没有key，默认为0</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a> <span class="cf">return</span> a<span class="op">+</span>b</span></code></pre></div>
+<h3 id="列表">1.5.3 列表</h3>
+<table>
+<thead>
+<tr class="header">
+<th><strong>操作</strong></th>
+<th><strong>语句</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>定义</strong></td>
+<td><code>li=[value,value,...]</code></td>
+</tr>
+<tr class="even">
+<td><strong>插入</strong></td>
+<td><code>li.append(value) #尾部插入元素</code><br><code>li.insert(pos,value) #指定位置插入元素</code></td>
+</tr>
+<tr class="odd">
+<td><strong>访问</strong></td>
+<td><code>li[pos] #访问第pos+1个元素</code> <br> <code>li[start:end] #截取列表</code></td>
+</tr>
+<tr class="even">
+<td><strong>检测存在</strong></td>
+<td><code>value in li #存在返回True，不存在返回False</code></td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>li<span class="op">=</span>[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>li.append(<span class="dv">6</span>)  <span class="co"># 在列表末尾添加元素</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>li.insert(<span class="dv">0</span>,<span class="dv">0</span>)  <span class="co"># 在列表指定位置插入元素</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>li.pop()   <span class="co"># 删除列表末尾元素</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>li.pop(<span class="dv">0</span>)   <span class="co"># 删除列表指定位置元素</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>li.remove(<span class="dv">1</span>)  <span class="co"># 删除列表中指定元素</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>li.reverse()  <span class="co"># 列表反转</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>li.sort()   <span class="co"># 列表排序</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>li.sort(reverse<span class="op">=</span><span class="va">True</span>) <span class="co"># 列表排序，反转</span></span></code></pre></div>
+<h3 id="字典">1.5.4 字典</h3>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>di<span class="op">=</span>{<span class="dv">1</span>:<span class="dv">1</span>,<span class="dv">2</span>:<span class="dv">2</span>,<span class="dv">3</span>:<span class="dv">3</span>}</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>di[<span class="dv">1</span>]   <span class="co"># 获取字典中指定元素</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>di.get(<span class="dv">1</span>)  <span class="co"># 获取字典中指定元素</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>di.pop(<span class="dv">1</span>)  <span class="co"># 删除字典中指定元素</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>di.popitem() <span class="co"># 删除字典中随机元素</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>di.clear()  <span class="co"># 清空字典</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>di.setdefault(<span class="dv">1</span>,<span class="dv">1</span>) <span class="co"># 如果字典中不存在指定元素，则添加该元素</span></span></code></pre></div>
+<h3 id="其他">1.6. 其他</h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 一种输入方式</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>[i <span class="cf">for</span> i <span class="kw">in</span> sys.stdin]</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 表达式</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>[i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">10</span>) <span class="cf">if</span> i<span class="op">%</span><span class="dv">2</span><span class="op">==</span><span class="dv">0</span>] <span class="co"># 迭代器表达式</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>[i <span class="cf">if</span> i<span class="op">%</span><span class="dv">2</span><span class="op">==</span><span class="dv">0</span> <span class="cf">else</span> <span class="dv">0</span>] <span class="co"># 类似于三元运算符</span></span></code></pre></div>
+</body>
+</html>
